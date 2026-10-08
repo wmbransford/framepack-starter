@@ -1,0 +1,40 @@
+{
+  "name": "framepack-free-starter",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "studio": "remotion studio src/index.tsx --props=props.json",
+    "render": "remotion render src/index.tsx LaunchHorizontal out/launch.mp4 --props=props.json",
+    "render:vertical": "remotion render src/index.tsx LaunchVertical out/launch-vertical.mp4 --props=props.json"
+  },
+  "dependencies": {
+    "remotion": "4.0.533",
+    "@remotion/cli": "4.0.533",
+    "react": "19.2.6",
+    "react-dom": "19.2.6"
+  },
+  "devDependencies": {
+    "typescript": "5.7.3",
+    "@types/react": "19.2.14"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "description": "Free editable Remotion opening and closing scenes with horizontal and vertical video exports.",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wmbransford/framepack-starter.git"
+  },
+  "homepage": "https://web-production-f36af.up.railway.app",
+  "bugs": {
+    "url": "https://github.com/wmbransford/framepack-starter/issues"
+  },
+  "keywords": [
+    "remotion",
+    "react",
+    "video",
+    "templates",
+    "motion-design"
+  ]
+}
