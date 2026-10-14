@@ -1,0 +1,37 @@
+name: Render check
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  render:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npx tsc --noEmit
+      - run: npx remotion browser ensure
+      - name: Render horizontal and vertical videos
+        run: |
+          npm run render
+          npm run render:vertical
+      - name: Render the worked example
+        run: npx remotion render src/index.tsx LaunchHorizontal out/ledgerline.mp4 --props=examples/ledgerline-launch.json
+      - name: Check output files
+        run: |
+          node scripts/check-render.mjs out/launch.mp4 1280x720 12
+          node scripts/check-render.mjs out/launch-vertical.mp4 720x1280 12
+          node scripts/check-render.mjs out/ledgerline.mp4 1280x720 12
+      - uses: actions/upload-artifact@v4
+        with:
+          name: renders
+          path: out/*.mp4
+          retention-days: 14

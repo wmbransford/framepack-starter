@@ -1,11 +1,13 @@
 {
   "name": "framepack-free-starter",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "studio": "remotion studio src/index.tsx --props=props.json",
     "render": "remotion render src/index.tsx LaunchHorizontal out/launch.mp4 --props=props.json",
-    "render:vertical": "remotion render src/index.tsx LaunchVertical out/launch-vertical.mp4 --props=props.json"
+    "render:vertical": "remotion render src/index.tsx LaunchVertical out/launch-vertical.mp4 --props=props.json",
+    "render:example": "remotion render src/index.tsx LaunchHorizontal out/ledgerline.mp4 --props=examples/ledgerline-launch.json",
+    "check": "node scripts/check-render.mjs out/launch.mp4 1280x720 12"
   },
   "dependencies": {
     "remotion": "4.0.533",
@@ -20,7 +22,7 @@
   "engines": {
     "node": ">=22"
   },
-  "description": "Free editable Remotion opening and closing scenes with horizontal and vertical video exports.",
+  "description": "Free editable Remotion opening and closing scenes for product-launch videos, with horizontal and vertical MP4 exports.",
   "license": "MIT",
   "repository": {
     "type": "git",
